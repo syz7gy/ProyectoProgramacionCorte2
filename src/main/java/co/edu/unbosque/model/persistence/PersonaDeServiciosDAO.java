@@ -41,13 +41,15 @@ public class PersonaDeServiciosDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-			dbcon.getConnect().prepareStatement("INSERT INTO pServicios VALUES (?, ?, ?, ?, ?, ?);"));
+			dbcon.getConnect().prepareStatement("INSERT INTO pServicios VALUES (?, ?, ?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
-			dbcon.getPrepareStatement().setLong(3, temp.getCedula());
-			dbcon.getPrepareStatement().setString(4, temp.getContrasena());
-			dbcon.getPrepareStatement().setInt(5, temp.getsLimpiada());
-			dbcon.getPrepareStatement().setString(6, temp.getSalario());
+			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
+			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
+			dbcon.getPrepareStatement().setString(5, temp.getUsername());
+			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
+			dbcon.getPrepareStatement().setInt(7, temp.getsLimpiada());
+			dbcon.getPrepareStatement().setString(8, temp.getSalario());
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -56,9 +58,10 @@ public class PersonaDeServiciosDAO {
 		}
 	}
 
-	public void create(int id, String nombre, long cedula, String contrasena, int sLimpiada, String salario) {
+	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String salario, int sLimpiada) {
 
-		PersonaDeServiciosDTO newPersonaDeServicio = new PersonaDeServiciosDTO(id, nombre, cedula, contrasena,sLimpiada, salario);
+		PersonaDeServiciosDTO newPersonaDeServicio = new PersonaDeServiciosDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena, salario, sLimpiada);
 		dbcon.initConnection();
 		pServicios.add(newPersonaDeServicio);
 	}
@@ -75,12 +78,14 @@ public class PersonaDeServiciosDAO {
 			while (dbcon.getResultSet().next()) {
 				int id = dbcon.getResultSet().getInt("id");
 				String nombre = dbcon.getResultSet().getString("nombre");
+				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
 				long cedula = dbcon.getResultSet().getLong("cedula");
+				String username = dbcon.getResultSet().getString("username");
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String salario = dbcon.getResultSet().getString("salario");
 				int sLimpiadas = dbcon.getResultSet().getInt("sApoyada");
 
-				pServicios.add(new PersonaDeServiciosDTO(id, nombre, cedula, contrasena,sLimpiadas, salario));
+				pServicios.add(new PersonaDeServiciosDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena, salario, sLimpiadas));
 			}
 			dbcon.closeConnection();
 
@@ -94,20 +99,23 @@ public class PersonaDeServiciosDAO {
 		return salida;
 	}
 
-	public int updateById(int id, String nombre, long cedula, String contrasena, int sLimpiadas, String salario) {
+	public int updateById(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String salario, int sLimpiada) {
 
 		dbcon.initConnection();
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-			"UPDATE pServicios SET id=?, nombre=?, cedula=?, contrasena=?, dServicio=?, salario=? WHERE id=?;"));
+			"UPDATE pServicios SET id=?, nombre=?,fechaDeNacimiento=?, cedula=?,username=?,contrasena=?, dServicio=?, salario=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
-			dbcon.getPrepareStatement().setLong(3, cedula);
-			dbcon.getPrepareStatement().setString(4, contrasena);
-			dbcon.getPrepareStatement().setInt(5, sLimpiadas);
-			dbcon.getPrepareStatement().setString(6, salario);
-			dbcon.getPrepareStatement().setInt(7, id);
+			dbcon.getPrepareStatement().setString(4, fechaDeNacimiento);
+			dbcon.getPrepareStatement().setLong(5, cedula);
+			dbcon.getPrepareStatement().setString(6, username);
+			dbcon.getPrepareStatement().setString(7, contrasena);
+			dbcon.getPrepareStatement().setInt(8, sLimpiada);
+			dbcon.getPrepareStatement().setString(9, salario);
+			dbcon.getPrepareStatement().setInt(10, id);
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -117,9 +125,11 @@ public class PersonaDeServiciosDAO {
 		for (int i = 0; i < pServicios.size(); i++) {
 			if (pServicios.get(i).getId() == id) {
 				pServicios.get(i).setNombre(nombre);
+				pServicios.get(i).setFechaDeNacimiento(fechaDeNacimiento);
 				pServicios.get(i).setCedula(cedula);
+				pServicios.get(i).setUsername(username);
 				pServicios.get(i).setContrasena(contrasena);
-				pServicios.get(i).setsLimpiada(sLimpiadas);
+				pServicios.get(i).setsLimpiada(sLimpiada);
 				pServicios.get(i).setSalario(salario);
 				
 				return 0;

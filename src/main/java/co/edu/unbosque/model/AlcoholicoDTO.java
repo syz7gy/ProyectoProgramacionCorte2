@@ -9,11 +9,13 @@ public class AlcoholicoDTO extends PersonaDTO{
 		super();
 	}
 
-	public AlcoholicoDTO(int id, String nombre, long cedula, String contrasena, int nSesiones, String apodo) {
-		super(id, nombre, cedula, contrasena);
+	public AlcoholicoDTO(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, int nSesiones, String apodo) {
+		super(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
 
 		this.nSesiones = nSesiones;
 		this.apodo = apodo;
+		
 	}
 
 	public int getnSesiones() {
@@ -37,9 +39,5 @@ public class AlcoholicoDTO extends PersonaDTO{
 		return "\nNombre: " + getNombre() + "\nId: " + getId()  + "\nCedula: " + getCedula()
 		+ "\n Contraseña: " + getContrasena() + "\nNumero de sesiones: " + nSesiones + "\nApodo" + apodo ;
 	}
-	
-	
-	
-	
 	
 }

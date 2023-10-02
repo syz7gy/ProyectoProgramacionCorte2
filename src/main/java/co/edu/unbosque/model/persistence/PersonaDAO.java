@@ -44,11 +44,13 @@ public class PersonaDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-					dbcon.getConnect().prepareStatement("INSERT INTO personas VALUES (?, ?, ?, ?);"));
+					dbcon.getConnect().prepareStatement("INSERT INTO personas VALUES (?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
-			dbcon.getPrepareStatement().setLong(3, temp.getCedula());
-			dbcon.getPrepareStatement().setString(4, temp.getContrasena());
+			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
+			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
+			dbcon.getPrepareStatement().setString(5, temp.getUsername());
+			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -57,9 +59,10 @@ public class PersonaDAO {
 		}
 	}
 
-	public void create(int id, String nombre, long cedula, String nEstudio) {
+	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena) {
 
-		PersonaDTO newPersona = new PersonaDTO(id, nombre, cedula, nEstudio);
+		PersonaDTO newPersona = new PersonaDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
 		dbcon.initConnection();
 		personas.add(newPersona);
 
@@ -79,8 +82,12 @@ public class PersonaDAO {
 				String nombre = dbcon.getResultSet().getString("nombre");
 				long cedula = dbcon.getResultSet().getLong("cedula");
 				String nEstudio = dbcon.getResultSet().getString("nEstudio");
+				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
+				String username = dbcon.getResultSet().getString("username");
+				String contrasena = dbcon.getResultSet().getString("contrasena");
+				
 
-				personas.add(new PersonaDTO(id, nombre, cedula, nEstudio));
+				personas.add(new PersonaDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena));
 			}
 			dbcon.closeConnection();
 
@@ -93,17 +100,20 @@ public class PersonaDAO {
 		return salida;
 	}
 
-	public int updateById(int id, String nombre, long cedula, String contrasena) {
+	public int updateById(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena) {
 		dbcon.initConnection();
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE personas SET id=?, nombre=?, cedula=?, nEstudio=? WHERE id=?;"));
+					"UPDATE personas SET id=?, nombre=?, fechaDeNacimiento =?, cedula=?, username=?, nEstudio=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
-			dbcon.getPrepareStatement().setLong(3, cedula);
-			dbcon.getPrepareStatement().setString(4, contrasena);
-			dbcon.getPrepareStatement().setInt(5, id);
+			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);
+			dbcon.getPrepareStatement().setLong(4, cedula);
+			dbcon.getPrepareStatement().setString(5, username);
+			dbcon.getPrepareStatement().setString(6, contrasena);
+			dbcon.getPrepareStatement().setInt(7, id);
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -113,6 +123,8 @@ public class PersonaDAO {
 		for (int i = 0; i < personas.size(); i++) {
 			if (personas.get(i).getId() == id) {
 				personas.get(i).setNombre(nombre);
+				personas.get(i).setFechaDeNacimiento(fechaDeNacimiento);
+				personas.get(i).setUsername(username);
 				personas.get(i).setCedula(cedula);
 				personas.get(i).setContrasena(contrasena);
 				return 0;

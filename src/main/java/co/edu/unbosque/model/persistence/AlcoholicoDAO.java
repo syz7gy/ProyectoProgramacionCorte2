@@ -42,13 +42,15 @@ public class AlcoholicoDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-					dbcon.getConnect().prepareStatement("INSERT INTO alcoholicos VALUES (?, ?, ?, ?, ?, ?);"));
+			dbcon.getConnect().prepareStatement("INSERT INTO alcoholicos VALUES (?, ?, ?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
-			dbcon.getPrepareStatement().setLong(3, temp.getCedula());
-			dbcon.getPrepareStatement().setString(4, temp.getContrasena());
-			dbcon.getPrepareStatement().setInt(5, temp.getnSesiones());
-			dbcon.getPrepareStatement().setString(6, temp.getApodo());
+			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
+			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
+			dbcon.getPrepareStatement().setString(5, temp.getUsername());
+			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
+			dbcon.getPrepareStatement().setInt(7, temp.getnSesiones());
+			dbcon.getPrepareStatement().setString(8, temp.getApodo());
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -57,9 +59,10 @@ public class AlcoholicoDAO {
 		}
 	}
 
-	public void create(int id, String nombre, long cedula, String contrasena, int nSesiones,String apodo) {
+	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, int nSesiones, String apodo) {
 
-		AlcoholicoDTO newAlcoholico = new AlcoholicoDTO(id, nombre, cedula, contrasena,nSesiones, apodo);
+		AlcoholicoDTO newAlcoholico = new AlcoholicoDTO(id, nombre, fechaDeNacimiento, cedula, username,contrasena, nSesiones, apodo);
 		dbcon.initConnection();
 		alcoholicos.add(newAlcoholico);
 	}
@@ -80,8 +83,10 @@ public class AlcoholicoDAO {
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String apodo = dbcon.getResultSet().getString("apodo");
 				int nSesiones = dbcon.getResultSet().getInt("nSesiones");
+				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
+				String username = dbcon.getResultSet().getString("username");
 
-				alcoholicos.add(new AlcoholicoDTO(id, nombre, cedula, contrasena, nSesiones, apodo));
+				alcoholicos.add(new AlcoholicoDTO(id, nombre, fechaDeNacimiento, cedula, contrasena, username, nSesiones, apodo));
 			}
 			dbcon.closeConnection();
 
@@ -95,20 +100,23 @@ public class AlcoholicoDAO {
 		return salida;
 	}
 
-	public int updateById(int id, String nombre, long cedula, String contrasena, int nSesiones, String apodo) {
+	public int updateById(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, int nSesiones, String apodo) {
 
 		dbcon.initConnection();
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE alcoholicos SET id=?, nombre=?, cedula=?, contrasena=?, nSesiones=? , apodo=? WHERE id=?;"));
+					"UPDATE alcoholicos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?, contrasena=?, nSesiones=? , apodo=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
-			dbcon.getPrepareStatement().setLong(3, cedula);
-			dbcon.getPrepareStatement().setString(4, contrasena);
-			dbcon.getPrepareStatement().setInt(5, nSesiones);
-			dbcon.getPrepareStatement().setString(6, apodo);
-			dbcon.getPrepareStatement().setInt(7, id);
+			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);
+			dbcon.getPrepareStatement().setLong(4, cedula);
+			dbcon.getPrepareStatement().setString(5, username);
+			dbcon.getPrepareStatement().setString(6, contrasena);
+			dbcon.getPrepareStatement().setInt(7, nSesiones);
+			dbcon.getPrepareStatement().setString(8, apodo);
+			dbcon.getPrepareStatement().setInt(9, id);
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -118,7 +126,9 @@ public class AlcoholicoDAO {
 		for (int i = 0; i < alcoholicos.size(); i++) {
 			if (alcoholicos.get(i).getId() == id) {
 				alcoholicos.get(i).setNombre(nombre);
+				alcoholicos.get(i).setFechaDeNacimiento(fechaDeNacimiento);
 				alcoholicos.get(i).setCedula(cedula);
+				alcoholicos.get(i).setUsername(username);
 				alcoholicos.get(i).setContrasena(contrasena);
 				alcoholicos.get(i).setApodo(apodo);
 				alcoholicos.get(i).setnSesiones(nSesiones);

@@ -11,14 +11,20 @@ public class PsicologoDTO extends PersonaDTO{
 		super();
 	}
 
-	public PsicologoDTO(int id, String nombre, long cedula, String contrasena, String aGraduacion,int dServicio,int sApoyada, String salario ) {
-		super(id, nombre, cedula, contrasena);
+	
+
+	public PsicologoDTO(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String aGraduacion, int dServicio, int sApoyada, String salario) {
+		super(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
 
 		this.aGraduacion = aGraduacion;
 		this.dServicio = dServicio;
 		this.sApoyada = sApoyada;
 		this.salario = salario;
+		
 	}
+
+
 
 	public String getaGraduacion() {
 		return aGraduacion;

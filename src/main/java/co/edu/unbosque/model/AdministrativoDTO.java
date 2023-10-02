@@ -6,9 +6,10 @@ public class AdministrativoDTO extends PersonaDTO{
 		super();
 	}
 
-	public AdministrativoDTO(int id, String nombre, long cedula, String contrasena) {
-		super(id, nombre, cedula, contrasena);
-		// TODO Auto-generated constructor stub
+	public AdministrativoDTO(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena) {
+		super(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
+		
 	}
 	
 	public String toString() {

@@ -41,15 +41,17 @@ public class PsicologoDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-			dbcon.getConnect().prepareStatement("INSERT INTO psicologos VALUES (?, ?, ?, ?, ?, ?, ?, ?);"));
+			dbcon.getConnect().prepareStatement("INSERT INTO psicologos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
-			dbcon.getPrepareStatement().setLong(3, temp.getCedula());
-			dbcon.getPrepareStatement().setString(4, temp.getContrasena());
-			dbcon.getPrepareStatement().setInt(5, temp.getdServicio());
-			dbcon.getPrepareStatement().setInt(6, temp.getsApoyada());
-			dbcon.getPrepareStatement().setString(7, temp.getaGraduacion());
-			dbcon.getPrepareStatement().setString(8, temp.getSalario());
+			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
+			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
+			dbcon.getPrepareStatement().setString(5, temp.getUsername());
+			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
+			dbcon.getPrepareStatement().setInt(7, temp.getdServicio());
+			dbcon.getPrepareStatement().setInt(8, temp.getsApoyada());
+			dbcon.getPrepareStatement().setString(9, temp.getaGraduacion());
+			dbcon.getPrepareStatement().setString(10, temp.getSalario());
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -58,9 +60,10 @@ public class PsicologoDAO {
 		}
 	}
 
-	public void create(int id, String nombre, long cedula, String contrasena, int dServicio,int sApoyada,String aGraduacion, String salario) {
+	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String aGraduacion, int dServicio, int sApoyada, String salario) {
 
-		PsicologoDTO newComediante = new PsicologoDTO(id, nombre, cedula, contrasena,aGraduacion,dServicio,sApoyada, salario);
+		PsicologoDTO newComediante = new PsicologoDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena, aGraduacion, dServicio, sApoyada, salario);
 		dbcon.initConnection();
 		psicologos.add(newComediante);
 	}
@@ -81,10 +84,13 @@ public class PsicologoDAO {
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String aGraduacion = dbcon.getResultSet().getString("aGraduacion");
 				String salario = dbcon.getResultSet().getString("salario");
+				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
+				String username = dbcon.getResultSet().getString("username");
 				int dServicio = dbcon.getResultSet().getInt("dServicio");
 				int sApoyada = dbcon.getResultSet().getInt("sApoyada");
+				
 
-				psicologos.add(new PsicologoDTO(id, nombre, cedula, contrasena,aGraduacion,dServicio,sApoyada, salario));
+				psicologos.add(new PsicologoDTO(id, nombre, fechaDeNacimiento,cedula, username,contrasena,aGraduacion,dServicio,sApoyada, salario));
 			}
 			dbcon.closeConnection();
 
@@ -98,22 +104,25 @@ public class PsicologoDAO {
 		return salida;
 	}
 
-	public int updateById(int id, String nombre, long cedula, String contrasena, int dServicio,int sApoyada,String aGraduacion, String salario) {
+	public int updateById(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String aGraduacion, int dServicio, int sApoyada, String salario) {
 
 		dbcon.initConnection();
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE psicologos SET id=?, nombre=?, cedula=?, contrasena=?, aGraduacion=? , dServicio=?, sApoyada=?, salario=? WHERE id=?;"));
+					"UPDATE psicologos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?,contrasena=?, aGraduacion=? , dServicio=?, sApoyada=?, salario=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
-			dbcon.getPrepareStatement().setLong(3, cedula);
-			dbcon.getPrepareStatement().setString(4, contrasena);
-			dbcon.getPrepareStatement().setInt(5, dServicio);
-			dbcon.getPrepareStatement().setInt(6, sApoyada);
-			dbcon.getPrepareStatement().setString(7, aGraduacion);
-			dbcon.getPrepareStatement().setString(8, salario);
-			dbcon.getPrepareStatement().setInt(9, id);
+			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);
+			dbcon.getPrepareStatement().setLong(4, cedula);
+			dbcon.getPrepareStatement().setString(5, username);
+			dbcon.getPrepareStatement().setString(6, contrasena);
+			dbcon.getPrepareStatement().setInt(7, dServicio);
+			dbcon.getPrepareStatement().setInt(8, sApoyada);
+			dbcon.getPrepareStatement().setString(9, aGraduacion);
+			dbcon.getPrepareStatement().setString(10, salario);
+			dbcon.getPrepareStatement().setInt(11, id);
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -123,7 +132,9 @@ public class PsicologoDAO {
 		for (int i = 0; i < psicologos.size(); i++) {
 			if (psicologos.get(i).getId() == id) {
 				psicologos.get(i).setNombre(nombre);
+				psicologos.get(i).setFechaDeNacimiento(fechaDeNacimiento);
 				psicologos.get(i).setCedula(cedula);
+				psicologos.get(i).setUsername(username);
 				psicologos.get(i).setContrasena(contrasena);
 				psicologos.get(i).setaGraduacion(aGraduacion);
 				psicologos.get(i).setdServicio(dServicio);
