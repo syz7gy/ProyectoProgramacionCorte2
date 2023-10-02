@@ -1,70 +1,85 @@
 package co.edu.unbosque.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
 
-	private static Scanner sc = new Scanner(System.in);
-	
-	public static void printLine(String txt) {
-		System.out.println(txt);
+	private Scanner lector;
+
+	public Console() {
+
+		lector = new Scanner(System.in);
 	}
-	
-	public static void print(String txt) {
-		System.out.print(txt);
+
+	public int leerEntero() {
+		int temp = lector.nextInt();
+		return temp;
+
 	}
-	
-	public static void printSuccessLine(String txt) {
-		System.out.println("\u001B[32m" + txt + "\u001B[0m");
+
+	public long leerLong() {
+		long temp = lector.nextLong();
+		return temp;
+
 	}
-	
-	public static void printSuccess(String txt) {
-		System.out.print("\u001B[32m" + txt + "\u001B[0m");
+
+	public float leerFloat() {
+		float temp = lector.nextFloat();
+		return temp;
+
 	}
-	
-	public static void printErrLine(String txt) {
-		System.err.println(txt);
+
+	public double leerDouble() {
+		double temp = lector.nextDouble();
+		return temp;
+
 	}
-	
-	public static void printErr(String txt) {
-		System.err.print(txt);
+
+	public String leerLineaEntera() {
+		String temp = lector.nextLine();
+		return temp;
+
 	}
-	
-	public static int readInt() {
-		return sc.nextInt();
+
+	public String leerCadena() {
+		String temp = lector.next();
+		return temp;
+
 	}
-	
-	public static long readLong() {
-		return sc.nextLong();
+
+	public char leerCaracter() {
+		char temp = leerCadena().charAt(0);
+		return temp;
+
 	}
-	
-	public static String readLine() {
-		return sc.nextLine();
+
+	public boolean leerBooleano() {
+		boolean temp = Boolean.valueOf(leerCadena());
+		return temp;
+
 	}
-	
-	public static String read() {
-		return sc.next();
+
+	public void quemarLinea() {
+		lector.nextLine();
 	}
-	
-	public static float readFloat() {
-		return sc.nextFloat();
+
+	public void imprimirConSalto(String text) {
+		System.out.println(text);
+
 	}
-	
-	public static double readDouble() {
-		return sc.nextDouble();
+
+	public void imprimirConSaltoRed(String text) {
+		System.err.println(text);
+
 	}
-	
-	public static char readChar() {
-		return sc.next().charAt(0);
+
+	public void imprimirSinSalto(String text) {
+		System.out.println(text);
+
 	}
-	
-	public static boolean readBoolean() {
-		return sc.nextBoolean();
+
+	public void imprimirSalto() {
+		System.out.println();
 	}
-	
-	public static void burnLine() {
-		sc.nextLine();
-	}
-	
-	
 }

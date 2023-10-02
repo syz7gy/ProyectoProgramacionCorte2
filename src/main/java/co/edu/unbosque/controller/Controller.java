@@ -28,54 +28,50 @@ public class Controller {
 
 		ciclo1: while (true) {
 
-			c.printLine("---MENU---");
-			c.printLine("1. Crear.");
-			c.printLine("2. Actualizar.");
-			c.printLine("3. Eliminar.");
-			c.printLine("4. Mostrar.");
-			c.printLine("5. Salir.");
+			c.imprimirConSalto("---MENU---");
+			c.imprimirConSalto("1. Crear.");
+			c.imprimirConSalto("2. Actualizar.");
+			c.imprimirConSalto("3. Eliminar.");
+			c.imprimirConSalto("4. Mostrar.");
+			c.imprimirConSalto("5. Salir.");
 
-			ciclo2: while (true) {
-			String temp = c.readLine();
+			ciclo2: while (true)  {
+			String temp = c.leerCadena();
 			switch (temp) {
 			case "1": {
 
-				c.printLine("1. Administrativo\n2. Psicologo\n3. Persona de servicios\n4. Alcoholico ");
-				int op = c.readInt();
+				c.imprimirConSalto("1. Administrativo\n2. Psicologo\n3. Persona de servicios\n4. Alcoholico ");
+				int op = c.leerEntero();
 				switch (op) {
 				case 1:{
-					c.printLine("Crear administrativo.");
-					c.printLine("Ingrese nombre:");
-					String nombre = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese cedula:");
-					long cedula = c.readLong();
-					c.burnLine();
-					c.printLine("Ingrese contrasena:");
-					String contrasena = c.readLine();
+					c.imprimirConSalto("Crear administrativo.");
+					c.imprimirConSalto("Ingrese nombre:");
+					String nombre = c.leerCadena();
+					c.imprimirConSalto("Ingrese cedula:");
+					long cedula = c.leerLong();
+					c.imprimirConSalto("Ingrese contrasena:");
+					String contrasena = c.leerCadena();
 					
 					adao.create(new AdministrativoDTO(0, nombre, cedula, contrasena));
+					System.out.println(adao.toString());
 					break ciclo2;
 				}
 				case 2:{
-					c.printLine("Crear Psicologo.");
-					c.printLine("Ingrese nombre:");
-					String nombre = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese cedula:");
-					long cedula = c.readLong();
-					c.printLine("Ingrese contrasena:");
-					String contrasena = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese año de graduacion:");
-					String aGraduacion = c.readLine();
-					c.printLine("Ingrese dias de servicio:");
-					int dServicio = c.readInt();
-					c.printLine("Ingrese sesiones apoyadas:");
-					int sApoyada = c.readInt();
-					c.burnLine();
-					c.printLine("Ingrese salario:");
-					String salario = c.readLine();
+					c.imprimirConSalto("Crear Psicologo.");
+					c.imprimirConSalto("Ingrese nombre:");
+					String nombre = c.leerCadena();
+					c.imprimirConSalto("Ingrese cedula:");
+					long cedula = c.leerLong();
+					c.imprimirConSalto("Ingrese contrasena:");
+					String contrasena = c.leerCadena();
+					c.imprimirConSalto("Ingrese año de graduacion:");
+					String aGraduacion = c.leerCadena();
+					c.imprimirConSalto("Ingrese dias de servicio:");
+					int dServicio = c.leerEntero();
+					c.imprimirConSalto("Ingrese sesiones apoyadas:");
+					int sApoyada = c.leerEntero();
+					c.imprimirConSalto("Ingrese salario:");
+					String salario = c.leerCadena();
 					
 					pdao.create(new PsicologoDTO(0, nombre, cedula, contrasena, aGraduacion, sApoyada, dServicio, salario));
 					break ciclo2;
@@ -83,45 +79,38 @@ public class Controller {
 				}
 				
 				case 3: {
-					c.printLine("Crear Persona de servicios.");
-					c.printLine("Ingrese nombre:");
-					String nombre = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese cedula:");
-					long cedula = c.readLong();
-					c.printLine("Ingrese contrasena:");
-					String contrasena = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese numero de sesiones limpiadas: ");
-					int sLimpiadas = c.readInt();
-					c.printLine("Ingrese salario:");
-					String salario = c.readLine();
-					
+					c.imprimirConSalto("Crear Persona de servicios.");
+					c.imprimirConSalto("Ingrese nombre:");
+					String nombre = c.leerCadena();
+					c.imprimirConSalto("Ingrese cedula:");
+					long cedula = c.leerLong();
+					c.imprimirConSalto("Ingrese contrasena:");
+					String contrasena = c.leerCadena();
+					c.imprimirConSalto("Ingrese numero de sesiones limpiadas: ");
+					int sLimpiadas = c.leerEntero();
+					c.imprimirConSalto("Ingrese salario:");
+					String salario = c.leerCadena();
 					pdsdao.create(new PersonaDeServiciosDTO(0, nombre, cedula, contrasena,sLimpiadas, salario));
-					
 					break ciclo2;
 					
 				}
 				
 				case 4: {
 					
-					c.printLine("Crear Alcoholico.");
-					c.printLine("Ingrese nombre:");
-					String nombre = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese cedula:");
-					long cedula = c.readLong();
-					c.printLine("Ingrese contrasena:");
-					String contrasena = c.readLine();
-					c.burnLine();
-					c.printLine("Ingrese numero de sesiones a las que asistido: ");
-					int sLimpiadas = c.readInt();
-					c.burnLine();
-					c.printLine("Ingrese apodo:");
-					String apodo = c.readLine();
+					c.imprimirConSalto("Crear Alcoholico.");
+					c.imprimirConSalto("Ingrese nombre:");
+					String nombre = c.leerCadena();
+					c.imprimirConSalto("Ingrese cedula:");
+					long cedula = c.leerLong();
+					c.imprimirConSalto("Ingrese contrasena:");
+					String contrasena = c.leerCadena();
+					c.imprimirConSalto("Ingrese numero de sesiones a las que asistido: ");
+					int sLimpiadas = c.leerEntero();
+					c.imprimirConSalto("Ingrese apodo:");
+					String apodo = c.leerCadena();
 					
 					aldao.create(new AlcoholicoDTO(0, nombre, cedula, contrasena, sLimpiadas, apodo));
-					
+					break ciclo2;
 				}
 				
 				
@@ -132,22 +121,22 @@ public class Controller {
 //					break;
 //				}
 //
-//				c.printLine("Ingrese el id del usuario que desea actualizar los datos");
+//				c.imprimirConSalto("Ingrese el id del usuario que desea actualizar los datos");
 //
-//				int id = c.readInt();
+//				int id = c.leerEntero();
 //
-//				c.printLine("Ingrese su nombre:");
+//				c.imprimirConSalto("Ingrese su nombre:");
 //				c.burnLine();
-//				String nombre = c.readLine();
-//				c.printLine("Ingrese su nombre de usuario");
-//				String usuario = c.readLine();
-//				c.printLine("Ingrese su contraseña");
-//				String contraseña = c.readLine();
+//				String nombre = c.leerEntero();
+//				c.imprimirConSalto("Ingrese su nombre de usuario");
+//				String usuario = c.leerEntero();
+//				c.imprimirConSalto("Ingrese su contraseña");
+//				String contraseña = c.leerEntero();
 //
 //				if (udao.updateById(id, nombre, usuario, contraseña) == 0) {
-//					c.printLine("Se ha actalizado con exito");
+//					c.imprimirConSalto("Se ha actalizado con exito");
 //				} else {
-//					c.printLine("Ha ocurrido un problema");
+//					c.imprimirConSalto("Ha ocurrido un problema");
 //				}
 //
 //				break;
@@ -158,41 +147,41 @@ public class Controller {
 //					break;
 //				}
 //
-//				c.printLine("Ingrese el id del usuario que desea eliminar los datos");
+//				c.imprimirConSalto("Ingrese el id del usuario que desea eliminar los datos");
 //
-//				int id = c.readInt();
+//				int id = c.leerEntero();
 //				c.burnLine();
 //				if (udao.deleteById(id) == 0) {
-//					c.printLine("Se ha eliminado con exito");
+//					c.imprimirConSalto("Se ha eliminado con exito");
 //				} else {
-//					c.printLine("Ha ocurrido un problema");
+//					c.imprimirConSalto("Ha ocurrido un problema");
 //				}
 //
 //				break;
 //			}
 //			case "4": {
 //
-//				c.printLine(udao.readAll());
+//				c.imprimirConSalto(udao.readAll());
 //
 //				break;
 //			}
 //			case "5": {
 //
 //				if (!udao.getusersList().isEmpty()) {
-//					c.printLine("Ingrese el nombre de el ingreso que desea mostrar:");
-//					String nombre = c.readLine();
-//					c.printLine(udao.readByName(nombre));
+//					c.imprimirConSalto("Ingrese el nombre de el ingreso que desea mostrar:");
+//					String nombre = c.leerEntero();
+//					c.imprimirConSalto(udao.readByName(nombre));
 //				}
 //
 //				break;
 //			}
 //			case "6": {
-//				c.printLine("Saliendo");
+//				c.imprimirConSalto("Saliendo");
 //				break ciclo1;
 //			}
 //
 //			default:
-//				c.printLine("Elija una opcion valida, imbecil");
+//				c.imprimirConSalto("Elija una opcion valida, imbecil");
 //				break;
 //			}
 			}
