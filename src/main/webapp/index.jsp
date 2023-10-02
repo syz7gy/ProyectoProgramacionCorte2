@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<form action="usercontrollerservlet">
+		<form action="usercontrollerservlet" method="post">
 			<h1>Welcome to anonymous alcoholics, what do you wish to sign
 				as?</h1>
 

@@ -3,7 +3,13 @@ package co.edu.unbosque.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.hibernate.mapping.List;
+
+import com.mysql.cj.protocol.a.NativeConstants.IntegerDataType;
+
+import co.edu.unbosque.model.AdministrativoDTO;
 import co.edu.unbosque.model.UserDTO;
+import co.edu.unbosque.model.persistence.AdministrativoDAO;
 import co.edu.unbosque.model.persistence.UserDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,40 +21,47 @@ public class UserControllerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4331680861219300600L;
 	private UserDAO uDao;
+	private AdministrativoDAO aDao;
 
 	public UserControllerServlet() {
+		aDao = new AdministrativoDAO();
 		uDao = new UserDAO();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		for (UserDTO u : uDao.getusersList()) {
-			out.write(u.toString());
-		}
+		out.write(aDao.getAdministrativos().toString());
 		out.close();
+
+		// PrintWriter out = resp.getWriter();
+//		for (UserDTO u : uDao.getusersList()) {
+//			out.write(u.toString());
+//		}
+//		out.close();
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		resp.setContentType("text/html");
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		boolean status = uDao.validate(new UserDTO(0, username, password, password));
-		log(username);
-		log(password);
+
+		// AGREGAR ADMINISTRATIVO
 		PrintWriter out = resp.getWriter();
-		if(status) {
-			RequestDispatcher rd = req.getRequestDispatcher("login-success.jsp");
+		String action = req.getParameter("_method");
+
+		if (action.equalsIgnoreCase("Registrar Administrador")) {
+			String nombre = req.getParameter("textNom");
+			String cedula = req.getParameter("ced");
+			String contraseña = req.getParameter("con");
+			aDao.create(new AdministrativoDTO(0, nombre, Long.parseLong(cedula), contraseña));
+
+			RequestDispatcher rd = req.getRequestDispatcher("message-success.jsp");
 			rd.forward(req, resp);
-			
-		}else {
-			RequestDispatcher re = req.getRequestDispatcher("login-error.jsp");
-			re.forward(req, resp);
+
 		}
+
 		out.close();
+
 	}
 
 	@Override
@@ -60,7 +73,7 @@ public class UserControllerServlet extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		super.doDelete(req, resp);
 	}
 

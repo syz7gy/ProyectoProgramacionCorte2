@@ -31,7 +31,9 @@
 			</div>
 			<pre>
 			</pre>
-			<button type="submit" class="btn">Login</button>
+			<a id="registeAdmin" href="register-admin.jsp">Register</a>
+			<br>
+			<button type="submit" href="show-admin.jsp" name="_method" value="Login" class="btn">Login</button>
 		</form>
 	</div>
 </body>
