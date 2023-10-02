@@ -10,7 +10,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background-image: url("https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_1280.png");
+	background-image: url("https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg");
 	background-size: cover;
 	background-position: center;
 
@@ -21,8 +21,7 @@ br {
 }
 
 .wrapper {
-	width: 800px;
-	height: 500px;
+	width: 450px;
 	background: transparent;
 	border: 2px solid rgba(255, 255, 255, .2);
 	backdrop-filter: blur(20px);
@@ -83,4 +82,3 @@ br {
 .tituloLogin {
 	text-align: left;
 }
-
