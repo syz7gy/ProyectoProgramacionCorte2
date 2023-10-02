@@ -26,13 +26,13 @@ public class UserControllerServlet extends HttpServlet {
 		for (UserDTO u : uDao.getusersList()) {
 			out.write(u.toString());
 		}
-//		out.write("Holi :3");
 		out.close();
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setContentType("text/html");
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
@@ -41,12 +41,10 @@ public class UserControllerServlet extends HttpServlet {
 		log(password);
 		PrintWriter out = resp.getWriter();
 		if(status) {
-//			out.write("jajaj lo encontre :V");
 			RequestDispatcher rd = req.getRequestDispatcher("login-success.jsp");
 			rd.forward(req, resp);
 			
 		}else {
-//			out.write("Usuario o contraseña incorrecta");
 			RequestDispatcher re = req.getRequestDispatcher("login-error.jsp");
 			re.forward(req, resp);
 		}
