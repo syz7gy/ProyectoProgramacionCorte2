@@ -42,11 +42,14 @@ public class AdministrativoDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-			dbcon.getConnect().prepareStatement("INSERT INTO administrativos VALUES (?, ?, ?, ?);"));
+			dbcon.getConnect().prepareStatement("INSERT INTO administrativos VALUES (?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
-			dbcon.getPrepareStatement().setLong(3, temp.getCedula());
-			dbcon.getPrepareStatement().setString(4, temp.getContrasena());
+			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
+			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
+			dbcon.getPrepareStatement().setString(5, temp.getUsername());
+			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
+			
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -55,9 +58,10 @@ public class AdministrativoDAO {
 		}
 	}
 
-	public void create(int id, String nombre, long cedula, String contrasena) {
+	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena) {
 
-		AdministrativoDTO newAdministrativo = new AdministrativoDTO(id, nombre, cedula, contrasena);
+		AdministrativoDTO newAdministrativo = new AdministrativoDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
 		dbcon.initConnection();
 		administrativos.add(newAdministrativo);
 	}
@@ -76,8 +80,11 @@ public class AdministrativoDAO {
 				String nombre = dbcon.getResultSet().getString("nombre");
 				long cedula = dbcon.getResultSet().getLong("cedula");
 				String contrasena = dbcon.getResultSet().getString("contrasena");
+				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
+				String username = dbcon.getResultSet().getString("username");
+				
 
-				administrativos.add(new AdministrativoDTO(id, nombre, cedula, contrasena));
+				administrativos.add(new AdministrativoDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena));
 			}
 			dbcon.closeConnection();
 
@@ -91,18 +98,21 @@ public class AdministrativoDAO {
 		return salida;
 	}
 
-	public int updateById(int id, String nombre, long cedula, String contrasena) {
+	public int updateById(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena) {
 
 		dbcon.initConnection();
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE administrativos SET id=?, nombre=?, cedula=?, contrasena=? WHERE id=?;"));
+					"UPDATE administrativos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?,contrasena=?,  WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
-			dbcon.getPrepareStatement().setLong(3, cedula);
-			dbcon.getPrepareStatement().setString(4, contrasena);
-			dbcon.getPrepareStatement().setInt(5, id);
+			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);
+			dbcon.getPrepareStatement().setLong(4, cedula);
+			dbcon.getPrepareStatement().setString(5, username);
+			dbcon.getPrepareStatement().setString(6, contrasena);
+			dbcon.getPrepareStatement().setInt(7, id);
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -114,6 +124,8 @@ public class AdministrativoDAO {
 				administrativos.get(i).setNombre(nombre);
 				administrativos.get(i).setCedula(cedula);
 				administrativos.get(i).setContrasena(contrasena);
+				administrativos.get(i).setFechaDeNacimiento(fechaDeNacimiento);
+				administrativos.get(i).setUsername(username);
 				
 				return 0;
 			}

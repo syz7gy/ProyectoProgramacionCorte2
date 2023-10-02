@@ -9,12 +9,13 @@ public class PersonaDeServiciosDTO extends PersonaDTO{
 		super();
 	}
 
-	
-	public PersonaDeServiciosDTO(int id, String nombre, long cedula, String contrasena, int sLimpiadas, String salario) {
-		super(id, nombre, cedula, contrasena);
+	public PersonaDeServiciosDTO(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
+			String contrasena, String salario, int sLimpiada) {
+		super(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
 
 		this.salario = salario;
 		this.sLimpiada = sLimpiada;
+	
 	}
 
 	public String getSalario() {
