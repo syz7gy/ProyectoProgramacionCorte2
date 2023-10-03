@@ -31,6 +31,7 @@
 			</div>
 			<pre>
 			</pre>
+			<a type="submit" href="register-admin.jsp" class="btn">Register</a>
 			<button type="submit" class="btn">Login</button>
 		</form>
 	</div>

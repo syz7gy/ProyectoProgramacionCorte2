@@ -105,7 +105,7 @@ public class AdministrativoDAO {
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE administrativos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?,contrasena=?,  WHERE id=?;"));
+					"UPDATE administrativos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?, contrasena=?  WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
 			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);
