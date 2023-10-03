@@ -80,7 +80,7 @@
 					</form>
 				</div>
 
-				<div class="div-list">
+				<div id="clients-list" class="div-list">
 					<h5>Clients list</h5>
 					<div class="wrapper-crud"></div>
 
@@ -118,8 +118,8 @@
 					</form>
 				</div>
 
-				<div class="div-list">
-					<h5>Clients list</h5>
+				<div id="psychologist-list" class="div-list">
+					<h5>Psychologist list</h5>
 					<div class="wrapper-crud"></div>
 
 				</div>
@@ -149,8 +149,8 @@
 					</form>
 				</div>
 
-				<div class="div-list">
-					<h5>Clients list</h5>
+				<div id="services-list" class="div-list">
+					<h5>Services list</h5>
 					<div class="wrapper-crud"></div>
 
 				</div>

@@ -16,18 +16,18 @@
 </head>
 <body>
 	<div class="wrapper">
-		<form action="usercontrollerservlet">
+		<form action="">
 			<h1>Welcome to anonymous alcoholics, what do you wish to sign
 				as?</h1>
 
 			<br> <br>
-			<a id="admin" href="login-admin.jsp" class="btn">Admin</a>
+			<button id="admin" type="submit" class="btn">Admin</button>
 			<br> <br>
-			<a id="client" href="login-client.jsp" class="btn">Client</a>
+			<button id="client" type="submit" class="btn">Client</button>
 			<br> <br>
-			<a id="psychologist" href="login-psychologist.jsp" class="btn">Psychologist</a>
+			<button id="psychologist" type="submit" class="btn">Psychologists</button>
 			<br> <br>
-			<a id="services" href="login-services.jsp" class="btn">Services</a>
+			<button id="service" type="submit" class="btn">Services</button>
 			<br> <br>
 		</form>
 	</div>
