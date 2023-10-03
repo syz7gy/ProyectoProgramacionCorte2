@@ -5,18 +5,19 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.AdministrativoDTO;
 import co.edu.unbosque.model.PersonaDeServiciosDTO;
+import co.edu.unbosque.model.UserDTO;
 import co.edu.unbosque.util.DBConnection;
 
 public class AdministrativoDAO {
-	
+
 	private ArrayList<AdministrativoDTO> administrativos;
 	private DBConnection dbcon;
 
 	public AdministrativoDAO() {
-		
+
 		administrativos = new ArrayList<AdministrativoDTO>();
 		dbcon = new DBConnection();
-		
+
 	}
 
 	public ArrayList<AdministrativoDTO> getAdministrativos() {
@@ -34,7 +35,7 @@ public class AdministrativoDAO {
 	public void setDbcon(DBConnection dbcon) {
 		this.dbcon = dbcon;
 	}
-	
+
 	public void create(Object o) {
 
 		AdministrativoDTO temp = (AdministrativoDTO) o;
@@ -42,14 +43,14 @@ public class AdministrativoDAO {
 		try {
 
 			dbcon.setPrepareStatement(
-			dbcon.getConnect().prepareStatement("INSERT INTO administrativos VALUES (?, ?, ?, ?, ?, ?);"));
+					dbcon.getConnect().prepareStatement("INSERT INTO administrativos VALUES (?, ?, ?, ?, ?, ?);"));
 			dbcon.getPrepareStatement().setInt(1, 0);
 			dbcon.getPrepareStatement().setString(2, temp.getNombre());
 			dbcon.getPrepareStatement().setString(3, temp.getFechaDeNacimiento());
 			dbcon.getPrepareStatement().setLong(4, temp.getCedula());
 			dbcon.getPrepareStatement().setString(5, temp.getUsername());
 			dbcon.getPrepareStatement().setString(6, temp.getContrasena());
-			
+
 			dbcon.getPrepareStatement().executeUpdate();
 			dbcon.closeConnection();
 
@@ -61,7 +62,8 @@ public class AdministrativoDAO {
 	public void create(int id, String nombre, String fechaDeNacimiento, long cedula, String username,
 			String contrasena) {
 
-		AdministrativoDTO newAdministrativo = new AdministrativoDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena);
+		AdministrativoDTO newAdministrativo = new AdministrativoDTO(id, nombre, fechaDeNacimiento, cedula, username,
+				contrasena);
 		dbcon.initConnection();
 		administrativos.add(newAdministrativo);
 	}
@@ -82,7 +84,6 @@ public class AdministrativoDAO {
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
 				String username = dbcon.getResultSet().getString("username");
-				
 
 				administrativos.add(new AdministrativoDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena));
 			}
@@ -126,7 +127,7 @@ public class AdministrativoDAO {
 				administrativos.get(i).setContrasena(contrasena);
 				administrativos.get(i).setFechaDeNacimiento(fechaDeNacimiento);
 				administrativos.get(i).setUsername(username);
-				
+
 				return 0;
 			}
 		}
@@ -154,5 +155,19 @@ public class AdministrativoDAO {
 		}
 		return 1;
 	}
-	
+
+	public boolean validate(AdministrativoDTO login) {
+		readAll();
+		for (AdministrativoDTO aDTO : administrativos) {
+			if (aDTO.getUsername().equals(login.getUsername())) {
+				if (aDTO.getContrasena().equals(login.getContrasena())) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
 }

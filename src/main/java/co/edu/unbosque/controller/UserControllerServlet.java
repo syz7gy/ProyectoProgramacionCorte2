@@ -26,7 +26,7 @@ public class UserControllerServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 	}
 
 	@Override
@@ -70,15 +70,33 @@ public class UserControllerServlet extends HttpServlet {
 			RequestDispatcher rDeleteAdmin = req.getRequestDispatcher("message-delete-admin.jsp");
 			rDeleteAdmin.forward(req, resp);
 		}
-		
+
+		// MOSTRAR ADMIN
 		else if (action.equals("Mostrar")) {
-			
+
 			aDao.readAll();
 			out.print("User list: <br>");
 			for (AdministrativoDTO aDto : aDao.getAdministrativos()) {
-				out.write(aDto.toString()+"<br>");
+				out.write(aDto.toString() + "<br>");
 			}
 		}
+
+		// LOGIN ADMIN
+		else if (action.equals("login")) {
+			resp.setContentType("text/html");
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			boolean status = aDao.validate(new AdministrativoDTO(0, null, null, 0, username, password));
+
+			if (status) {
+				RequestDispatcher r2 = req.getRequestDispatcher("login-success-admin.jsp");
+				r2.forward(req, resp);
+			} else {
+				RequestDispatcher r2 = req.getRequestDispatcher("message-delete-admin.jsp");
+				r2.forward(req, resp);
+			}
+		}
+
 		out.close();
 	}
 
