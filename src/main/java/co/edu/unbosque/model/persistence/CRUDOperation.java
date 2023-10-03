@@ -25,5 +25,5 @@ public interface CRUDOperation<E> {
 	public int updateById(int id, String... args);
 
 	public int deleteById(int id);
-
+	
 }

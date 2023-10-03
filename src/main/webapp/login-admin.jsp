@@ -19,19 +19,21 @@
 </head>
 <body>
 	<div class="wrapper">
-		<form action="">
+		<form action="usercontrollerservlet" method="post">
 			<h1>Admin</h1>
 			<div class="input-box">
-				<input type="text" placeholder="Username" required id="username">
-				<i class='bx bxs-user'></i>
+				<input type="text" placeholder="Username" name="username" required
+					id="username"> <i class='bx bxs-user'></i>
 			</div>
 			<div class="input-box">
-				<input type="password" placeholder="Password" required id="password">
-				<i class='bx bxs-lock-alt'></i>
+				<input type="password" placeholder="Password" name="password"
+					required id="password"> <i class='bx bxs-lock-alt'></i>
 			</div>
 			<pre>
 			</pre>
-			<button type="submit" class="btn">Login</button>
+			<a type="submit" href="register-admin.jsp" class="btn">Register</a> <br>
+			<br> <input type="submit" name="_method" value="login"
+				class="btn">
 		</form>
 	</div>
 </body>
