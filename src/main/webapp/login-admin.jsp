@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,24 +12,26 @@
 	crossorigin="anonymous">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
-<link rel="stylesheet" href="style/styles.css">
-<title>Sign up as</title>
+<link rel="stylesheet" href="style/stylesadminlogin.css">
+
+
+<title>Admin login</title>
 </head>
 <body>
 	<div class="wrapper">
 		<form action="">
-			<h1>Welcome to anonymous alcoholics, what do you wish to sign
-				as?</h1>
-
-			<br> <br>
-			<button id="admin" type="submit" class="btn">Admin</button>
-			<br> <br>
-			<button id="client" type="submit" class="btn">Client</button>
-			<br> <br>
-			<button id="psychologist" type="submit" class="btn">Psychologists</button>
-			<br> <br>
-			<button id="service" type="submit" class="btn">Services</button>
-			<br> <br>
+			<h1>Admin</h1>
+			<div class="input-box">
+				<input type="text" placeholder="Username" required id="username">
+				<i class='bx bxs-user'></i>
+			</div>
+			<div class="input-box">
+				<input type="password" placeholder="Password" required id="password">
+				<i class='bx bxs-lock-alt'></i>
+			</div>
+			<pre>
+			</pre>
+			<button type="submit" class="btn">Login</button>
 		</form>
 	</div>
 </body>

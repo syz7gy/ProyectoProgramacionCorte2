@@ -1,0 +1,351 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: beige;
+}
+
+h1 {
+	text-align: center;
+}
+
+
+h2 {
+	text-align: center;
+}
+
+.handle-alcoholics h2 {
+	text-align: center;
+	color: white;
+	font-weight: 300;
+}
+
+.div-crud {
+	width: 100%;
+	height: calc(100vh-100px);
+	display: flex;
+	justify-content: center;
+}
+
+.div-crud .crud-alcoholic-wrapper {
+	width: 30%;
+	height: 800px;
+	margin: 15px 15px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+
+}
+
+.div-crud .crud-alcoholic-wrapper h3 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud .crud-alcoholic-wrapper form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.div-crud .crud-alcoholic-wrapper form input{
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud .crud-alcoholic-wrapper form label {
+	color: white;
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud .crud-alcoholic-wrapper form button {
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud .div-list {
+	width: 55%;
+	height: calc(100%-50px);
+	margin: 15px 15px;
+	background: transparent;
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.div-crud .div-list h5 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud .wrapper-crud {
+	width: 100%;
+	height: 100%;
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 30px;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: none;
+	margin: 0 5px;
+	color: wheat;
+	border-radius: 50px;
+
+}
+
+.second-wrapper {
+	background-image: linear-gradient(to top right, rgba(228, 221, 221, 0.50) 10%, rgba(0, 0, 0, 0.80) 60%),
+		url("https://cdn.pixabay.com/photo/2015/11/30/23/32/champagner-1071356_1280.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+}
+
+.btn-edit {
+	background-color: limegreen;
+}
+
+
+.btn-delete {
+	background-color: crimson;
+
+}
+
+
+
+.handle-psychologist h2 {
+	text-align: center;
+	color: white;
+	font-weight: 300;
+}
+
+.div-crud-p {
+	width: 100%;
+	height: calc(100vh-100px);
+	display: flex;
+	justify-content: center;
+}
+
+.div-crud-p .crud-psychologist-wrapper {
+	width: 30%;
+	height: 1000px;
+	margin: 15px 15px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+
+}
+
+.div-crud-p .crud-psychologist-wrapper h3 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud-p .crud-psychologist-wrapper form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.div-crud-p .crud-psychologist-wrapper form input{
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+.div-crud-p .crud-psychologist-wrapper form label {
+	width: 60%;
+	color: white;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud-p .crud-psychologist-wrapper form button {
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud-p .div-list {
+	width: 55%;
+	height: calc(100%-50px);
+	margin: 15px 15px;
+	background: transparent;
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.div-crud-p .div-list h5 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud-p .wrapper-crud {
+	width: 100%;
+	height: 100%;
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 30px;
+}
+
+.second-wrapper-p {
+	background-image: linear-gradient(to top right, rgba(228, 221, 221, 0.50) 10%, rgba(0, 0, 0, 0.80) 60%),
+		url("https://cdn.pixabay.com/photo/2017/01/30/02/20/mental-health-2019924_1280.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+}
+
+
+
+.handle-service h2 {
+	text-align: center;
+	color: white;
+	font-weight: 300;
+}
+
+.div-crud-s {
+	width: 100%;
+	height: calc(100vh-100px);
+	display: flex;
+	justify-content: center;
+}
+
+.div-crud-s .crud-service-wrapper {
+	width: 30%;
+	height: 800px;
+	margin: 15px 15px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+
+}
+
+.div-crud-s .crud-service-wrapper h3 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud-s .crud-service-wrapper form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.div-crud-s .crud-service-wrapper form input{
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+.div-crud-s .crud-service-wrapper form label {
+	width: 60%;
+	color: white;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud-s .crud-service-wrapper form button {
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin: 10px 10px;
+}
+
+.div-crud-s .div-list {
+	width: 55%;
+	height: calc(100%-50px);
+	margin: 15px 15px;
+	background: transparent;
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.div-crud-s .div-list h5 {
+	color: white;
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.div-crud-s .wrapper-crud-s {
+	width: 100%;
+	height: 100%;
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 30px;
+}
+
+.second-wrapper-s {
+	background-image: linear-gradient(to top right, rgba(228, 221, 221, 0.50) 10%, rgba(0, 0, 0, 0.80) 60%),
+		url("https://cdn.pixabay.com/photo/2016/07/20/23/31/girl-1531575_1280.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+}
