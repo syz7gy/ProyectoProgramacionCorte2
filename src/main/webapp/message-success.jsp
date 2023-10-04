@@ -1,2 +1,2 @@
-<h2>Registrado correctamente</h2>
-<%@ include file="register-admin.jsp"%>
+<!-- <center><h2>Registrado correctamente</h2></center> -->
+<%@ include file="login-admin.jsp"%>

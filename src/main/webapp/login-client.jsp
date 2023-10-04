@@ -33,6 +33,52 @@
 			</pre>
 			<button type="submit" class="btn">Login</button>
 		</form>
+		<br>
+		<button class="btn"
+			onclick="document.getElementById('id01').style.display='block'">Sign
+			Up</button>
+		
+		<div id="id01" class="modal">
+			<form class="modal-content" action="/action_page.php">
+				<div class="container">
+					<h1>Sign Up</h1>
+					<p>Please fill in this form to create an account.</p>
+					<hr>
+					<div class="input-box">
+						<label for="Name"><b>Name</b></label> <input type="text"
+							placeholder="Enter name" name="name" required>
+					</div>
+					<div class="input-box">
+						<label for="Nickname"><b>Nickname</b></label> <input type="text"
+							placeholder="Enter nickname" name="nickname" required>
+					</div>
+					<div class="input-box">
+						<label for="psw"><b>Document</b></label> <input type="password"
+							placeholder="Enter Document" name="psw" required>
+					</div>
+					<div class="input-box">
+						<label> Enter your birthdate:</label> <input type="date"
+							name="bdate" value="2023-10-01">
+					</div>
+					<div class="input-box">
+						<input type="text" id="birth-place" placeholder="Birth place">
+					</div>
+				
+					<div class="input-box">
+
+						<label for="quantity">Number of sessions attended:</label> <input
+							type="number" id="quantity" name="quantity" min="0" max="0">
+					</div>
+					<div class="clearfix">
+						<button type="submit" class="btn">Sign Up</button>
+						<br> <br> 
+						<button type="button"
+							onclick="document.getElementById('id01').style.display='none'"
+							class="cancelbtn">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
