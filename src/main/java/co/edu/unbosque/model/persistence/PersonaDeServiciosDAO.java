@@ -83,7 +83,7 @@ public class PersonaDeServiciosDAO {
 				String username = dbcon.getResultSet().getString("username");
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String salario = dbcon.getResultSet().getString("salario");
-				int sLimpiadas = dbcon.getResultSet().getInt("sApoyada");
+				int sLimpiadas = dbcon.getResultSet().getInt("slimpiadas");
 
 				pServicios.add(new PersonaDeServiciosDTO(id, nombre, fechaDeNacimiento, cedula, username, contrasena, salario, sLimpiadas));
 			}

@@ -107,24 +107,26 @@
 			<div class="div-crud-p">
 				<div class="crud-psychologist-wrapper">
 					<h3>Handle psychologists:</h3>
-					<form action="#" id="crud">
-						<input type="text" id="id" placeholder="ID" name="idPsy"></input>
-						<input type="text" id="name" placeholder="Name" name="" /><input
-							type="text" id="document" placeholder="Document" /> <label
-							for="quantity">Number of sessions attended:</label> <input
-							type="number" id="quantity" name="quantity" min="0" max="1000">
-						<label> Enter your birthdate: <input type="date"
-							name="bdate" value="2023-10-01" />
-						</label> <input type="text" id="birth-place" placeholder="Birth place" /><label>
-							Enter your graduation date: <input type="date" name="bdate"
-							value="2023-10-01" />
-						</label> <label for="salary-psychologist">Salary:</label><input
-							type="number" id="salary-psychologist" name="quantity"
-							min="1100000" max=""> <label for="quantity">Number
-							of sessions attended:</label> <input type="number" id="quantity"
-							name="quantity" min="0" max="1000">
-
-						<button type="submit" id="addbtn">Add</button>
+						<form action="admincontrollerservlet" method="post">
+						<input type="text" id="id" placeholder="ID" name="idPsy">
+						<input type="text" id="name" placeholder="Name" name="namePsy">
+						<input type="text" id="nickname" placeholder="Username" name="usernamePsy"> 
+						<input type="text" id="document" placeholder="Document" name="documentPsy"> 
+						<input type="text" id="birth-place" placeholder="Birth place" name="bdatePsy">
+						<input type="text" id="graduate" placeholder="Date Graduation" name="dateGra">
+						<input type="text" id="sesion" placeholder="Sesion" name="sesionesApo">
+						<input type="text" id="dServicio" placeholder="Days of Service" name="dServicio">
+						<input type="text" id="salario" placeholder="Salario" name="salarioPsy">
+						<input type="text" id="password" placeholder="Password" name="passwordPsy"> 
+						
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="AgregarPsy">Add</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="ActualizarPsy">Update</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="MostrarPsy">Show</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="EliminarPsy">Delete</button>
 					</form>
 				</div>
 
@@ -144,19 +146,24 @@
 			<div class="div-crud-s">
 				<div class="crud-service-wrapper">
 					<h3>Handle clients:</h3>
-					<form action="#" id="crud">
-						<input type="text" id="id" placeholder="ID" name="idServi"></input>
-						<input type="text" id="name" placeholder="Name" /> <input
-							type="text" id="document" placeholder="Document" /> <label
-							for="quantity">Number of sessions cleaned:</label> <input
-							type="number" id="quantity" name="quantity" min="0" max="1000">
-						<label for="salary-services">Salary:</label><input type="number"
-							id="salary-services" name="quantity" min="1100000" max="">
-						<label> Enter your birthdate: <input type="date"
-							name="bdate" value="2023-10-01" />
-						</label> <input type="text" id="birth-place" placeholder="Birth place" />
-
-						<button type="submit" id="addbtn">Add</button>
+					<form action="admincontrollerservlet" method="post">
+					<input type="text" id="id" placeholder="ID" name="idSer">
+						<input type="text" id="name" placeholder="Name" name="nameSer">
+						<input type="text" id="nickname" placeholder="Username" name="usernameSer"> 
+						<input type="text" id="document" placeholder="Document" name="documentSer"> 
+						<input type="text" id="birth-place" placeholder="Birth place" name="bdateSer">
+						<input type="text" id="salario" placeholder="Salario" name="salarioSer">
+						<input type="text" id="sesion" placeholder="sesion" name="nSesionesSer">
+						<input type="text" id="password" placeholder="Password" name="passwordSer">  
+						
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="AgregarSer">Add</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="ActualizarSer">Update</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="MostrarSer">Show</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="EliminarSer">Delete</button>
 					</form>
 				</div>
 
