@@ -13,14 +13,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class UserControllerServlet extends HttpServlet {
+public class AdminControllerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4331680861219300600L;
-	private UserDAO uDao;
 	private AdministrativoDAO aDao;
 
-	public UserControllerServlet() {
-		uDao = new UserDAO();
+	public AdminControllerServlet() {
 		aDao = new AdministrativoDAO();
 	}
 
@@ -33,17 +31,17 @@ public class UserControllerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// AGREGAR ADMINISTRATIVO
-		String action = req.getParameter("_method");
+		String action = req.getParameter("_methodAdmin");
 		PrintWriter out = resp.getWriter();
 
-		if (action.equalsIgnoreCase("Registrar Administrador")) {
-			String name = req.getParameter("textNom");
-			String userName = req.getParameter("userNameAd");
-			String dateBorn = req.getParameter("dateBirth");
-			long cedula = Long.parseLong(req.getParameter("ced"));
-			String password = req.getParameter("con");
+		if (action.equalsIgnoreCase("Sign Up Admin")) {
+			String name = req.getParameter("nameAdmin");
+			long cedula = Long.parseLong(req.getParameter("docAdmin"));
+			String userName = req.getParameter("usernameAdmin");
+			String password = req.getParameter("pswAdmin");
+			String dateBorn = req.getParameter("dateAdmin");
 			aDao.create(new AdministrativoDTO(0, name, dateBorn, cedula, userName, password));
-
+			
 			RequestDispatcher rd = req.getRequestDispatcher("message-success.jsp");
 			rd.forward(req, resp);
 
@@ -82,17 +80,17 @@ public class UserControllerServlet extends HttpServlet {
 		}
 
 		// LOGIN ADMIN
-		else if (action.equals("login")) {
+		else if (action.equals("Login")) {
 			resp.setContentType("text/html");
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
+			String username = req.getParameter("loginUsernameAdm");
+			String password = req.getParameter("loginPasswordAdm");
 			boolean status = aDao.validate(new AdministrativoDTO(0, null, null, 0, username, password));
 
 			if (status) {
 				RequestDispatcher r2 = req.getRequestDispatcher("login-success-admin.jsp");
 				r2.forward(req, resp);
 			} else {
-				RequestDispatcher r2 = req.getRequestDispatcher("message-delete-admin.jsp");
+				RequestDispatcher r2 = req.getRequestDispatcher("message-error-login.jsp");
 				r2.forward(req, resp);
 			}
 		}

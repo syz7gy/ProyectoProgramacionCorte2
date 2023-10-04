@@ -11,7 +11,7 @@
 	rel="stylesheet" />
 <link rel="stylesheet" href="style/stylesAdmin.css">
 
-<title>Admin</title>
+<title>Psychologist</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -56,6 +56,15 @@
 	<div class="wrapper">
 		<h1>What do you wish to do?</h1>
 		<br> <br> <br> <br>
+		<h2>Edit your info:</h2>
+		<div class="second-wrapper-p" id="wrapper-psychologist">
+			<div id="psychologist-list" class="div-list">
+				<br>
+				<div class="wrapper-crud"></div>
+				<br> <br>
+			</div>
+		</div>
+
 		<h2>Clients:</h2>
 		<br>
 		<div class="second-wrapper" id="wrapper-alcoholic">
@@ -77,7 +86,7 @@
 					</form>
 				</div>
 
-				<div class="div-list">
+				<div id="clients-list" class="div-list">
 					<h5>Clients list</h5>
 					<div class="wrapper-crud"></div>
 
@@ -92,7 +101,7 @@
 				<div class="crud-service-wrapper">
 					<h3>Handle clients:</h3>
 					<form action="#" id="crud">
-						<input type="text" id="name" placeholder="Name" />  <input
+						<input type="text" id="name" placeholder="Name" /> <input
 							type="text" id="document" placeholder="Document" /> <label
 							for="quantity">Number of sessions cleaned:</label> <input
 							type="number" id="quantity" name="quantity" min="0" max="1000">
@@ -100,15 +109,14 @@
 							id="salary-services" name="quantity" min="1100000" max="">
 						<label> Enter your birthdate: <input type="date"
 							name="bdate" value="2023-10-01" />
-						</label>
-						<input type="text" id="birth-place" placeholder="Birth place" />
+						</label> <input type="text" id="birth-place" placeholder="Birth place" />
 
 						<button type="submit" id="addbtn">Add</button>
 					</form>
 				</div>
 
-				<div class="div-list">
-					<h5>Clients list</h5>
+				<div id="services-list" class="div-list">
+					<h5>Services list</h5>
 					<div class="wrapper-crud"></div>
 
 				</div>

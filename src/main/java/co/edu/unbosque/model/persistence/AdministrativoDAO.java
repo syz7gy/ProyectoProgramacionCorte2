@@ -157,6 +157,7 @@ public class AdministrativoDAO {
 	}
 
 	public boolean validate(AdministrativoDTO login) {
+		
 		readAll();
 		for (AdministrativoDTO aDTO : administrativos) {
 			if (aDTO.getUsername().equals(login.getUsername())) {

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +8,16 @@
 	rel="stylesheet" />
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
 	rel="stylesheet" />
-<link rel="stylesheet" href="style/stylesAdmin.css">
+<link rel="stylesheet" href="style/stylesclient.css">
 
-<title>Services</title>
+<title>Clients</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 		<div class="container-fluid">
-			<a class="navbar-brand"><h1>Services</h1></a> <a class="navbar-brand"><h6>Anonymous
+			<a class="navbar-brand"><h1>Clients</h1></a> <a class="navbar-brand"><h6>Anonymous
 					alcoholics</h6></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
@@ -29,7 +28,7 @@
 				id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 				<div class="offcanvas-header">
 					<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
-						Services</h5>
+						Clients</h5>
 					<button type="button" class="btn-close btn-close-white"
 						data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
@@ -37,6 +36,7 @@
 					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="#">Clients</a></li>
+
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="#">Log out</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
@@ -54,42 +54,15 @@
 	<div class="wrapper">
 		<h1>What do you wish to do?</h1>
 		<br> <br> <br> <br>
-
 		<h2>Edit your info:</h2>
-		<div class="second-wrapper-s" id="wrapper-service">
-			<div id="services-list" class="div-list">
-				<br> <br>
-				<div class="wrapper-crud"></div>
-				<br> <br>
-			</div>
-		</div>
-		<h2>Clients:</h2>
-		<br>
 		<div class="second-wrapper" id="wrapper-alcoholic">
-			<div class="handle-alcoholics"></div>
-			<div class="div-crud">
-				<div class="crud-alcoholic-wrapper">
-					<h3>Handle clients:</h3>
-					<form action="#" id="crud">
-						<input type="text" id="name" placeholder="Name" /> <input
-							type="text" id="nickname" placeholder="Nickname" /> <input
-							type="text" id="document" placeholder="Document" /> <label
-							for="quantity">Number of sessions attended:</label> <input
-							type="number" id="quantity" name="quantity" min="0" max="1000">
-						<label> Enter your birthdate: <input type="date"
-							name="bdate" value="2023-10-01" />
-						</label> <input type="text" id="birth-place" placeholder="Birth place" />
-						<button type="submit" id="addbtn">Add</button>
-					</form>
-				</div>
-
-				<div class="div-list">
-					<h5>Clients list</h5>
-					<div class="wrapper-crud"></div>
-
-				</div>
+			<div id="alcoholic-list" class="div-list">
+				<br>
+				<div class="wrapper-crud"></div>
+				<br> <br> <br> <br>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

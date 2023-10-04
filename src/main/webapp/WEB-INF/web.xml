@@ -14,12 +14,12 @@
 	</welcome-file-list>
 	<servlet>
 		<description>servlet for operation</description>
-		<display-name>UserControllerServlet</display-name>
-		<servlet-name>UserControllerServlet</servlet-name>
-		<servlet-class>co.edu.unbosque.controller.UserControllerServlet</servlet-class>
+		<display-name>AdminControllerServlet</display-name>
+		<servlet-name>AdminControllerServlet</servlet-name>
+		<servlet-class>co.edu.unbosque.controller.AdminControllerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>UserControllerServlet</servlet-name>
-		<url-pattern>/usercontrollerservlet</url-pattern>
+		<servlet-name>AdminControllerServlet</servlet-name>
+		<url-pattern>/admincontrollerservlet</url-pattern>
 	</servlet-mapping>
 </web-app>
