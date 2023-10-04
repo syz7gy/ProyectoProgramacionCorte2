@@ -24,8 +24,7 @@ public class PsicologoDTO extends PersonaDTO{
 		
 	}
 
-
-
+	
 	public String getaGraduacion() {
 		return aGraduacion;
 	}

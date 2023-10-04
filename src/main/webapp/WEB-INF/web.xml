@@ -12,8 +12,9 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
+	
 	<servlet>
-		<description>servlet for operation</description>
+		<description>servlet for operation Admin</description>
 		<display-name>AdminControllerServlet</display-name>
 		<servlet-name>AdminControllerServlet</servlet-name>
 		<servlet-class>co.edu.unbosque.controller.AdminControllerServlet</servlet-class>
@@ -21,5 +22,16 @@
 	<servlet-mapping>
 		<servlet-name>AdminControllerServlet</servlet-name>
 		<url-pattern>/admincontrollerservlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description>servlet for operation Psicologo</description>
+		<display-name>PsicologoControllerServlet</display-name>
+		<servlet-name>PsicologoControllerServlet</servlet-name>
+		<servlet-class>co.edu.unbosque.controller.PsicologoControllerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PsicologoControllerServlet</servlet-name>
+		<url-pattern>/psicologocontrollerservlet</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -106,7 +106,7 @@ public class PersonaDeServiciosDAO {
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-			"UPDATE pServicios SET id=?, nombre=?,fechaDeNacimiento=?, cedula=?,username=?,contrasena=?, dServicio=?, salario=? WHERE id=?;"));
+			"UPDATE pServicios SET id=?, nombre=?,fechaDeNacimiento=?, cedula=?,username=?,contrasena=?, slimpiadas=?, salario=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
 			dbcon.getPrepareStatement().setString(4, fechaDeNacimiento);

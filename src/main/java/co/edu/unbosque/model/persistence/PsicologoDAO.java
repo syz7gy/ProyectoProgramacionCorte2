@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.PsicologoDTO;
+import co.edu.unbosque.model.AdministrativoDTO;
 import co.edu.unbosque.model.PersonaDTO;
 import co.edu.unbosque.util.DBConnection;
 
@@ -167,6 +168,21 @@ public class PsicologoDAO {
 			}
 		}
 		return 1;
+	}
+	
+public boolean validate(PsicologoDTO login) {
+		
+		readAll();
+		for (PsicologoDTO pDTO : psicologos) {
+			if (pDTO.getUsername().equals(login.getUsername())) {
+				if (pDTO.getContrasena().equals(login.getContrasena())) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 	
 	

@@ -43,6 +43,7 @@ public class AdminControllerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("_methodAdmin");
 		PrintWriter out = resp.getWriter();
+		
 		if (action.equals("Login")) {
 			resp.setContentType("text/html");
 			String username = req.getParameter("loginUsernameAdm");
