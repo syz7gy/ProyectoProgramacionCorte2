@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import co.edu.unbosque.model.AdministrativoDTO;
+import co.edu.unbosque.model.AlcoholicoDTO;
 import co.edu.unbosque.model.UserDTO;
 import co.edu.unbosque.model.persistence.AdministrativoDAO;
+import co.edu.unbosque.model.persistence.AlcoholicoDAO;
 import co.edu.unbosque.model.persistence.UserDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,9 +19,11 @@ public class AdminControllerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4331680861219300600L;
 	private AdministrativoDAO aDao;
+	private AlcoholicoDAO ahDao;
 
 	public AdminControllerServlet() {
 		aDao = new AdministrativoDAO();
+		ahDao = new AlcoholicoDAO();
 	}
 
 	@Override
@@ -41,12 +45,59 @@ public class AdminControllerServlet extends HttpServlet {
 			String password = req.getParameter("pswAdmin");
 			String dateBorn = req.getParameter("dateAdmin");
 			aDao.create(new AdministrativoDTO(0, name, dateBorn, cedula, userName, password));
-			
+
 			RequestDispatcher rd = req.getRequestDispatcher("message-success.jsp");
 			rd.forward(req, resp);
 
-			// UPDATE ADMINISTRATIVO
-		} else if (action.equalsIgnoreCase("Modificar")) {
+			// AGREGAR ALCOHOLICO
+		} else if (action.equalsIgnoreCase("AgregarClient")) {
+			String nameCli = req.getParameter("nameCli");
+			String userNameCli = req.getParameter("usernameCli");
+			String dateBorCli = req.getParameter("bdateCli");
+			long cedulaCli = Long.parseLong(req.getParameter("documentCli"));
+			int nSesiones = Integer.parseInt(req.getParameter("nSesiones"));
+			String apodo = req.getParameter("apodo");
+			String passwordCli = req.getParameter("passwordCli");
+			ahDao.create(
+					new AlcoholicoDTO(0, nameCli, dateBorCli, cedulaCli, userNameCli, passwordCli, nSesiones, apodo));
+			RequestDispatcher rd = req.getRequestDispatcher("login-success-admin.jsp");
+			rd.forward(req, resp);
+
+			// UPDATE ALCOHOLICO
+		} else if (action.equalsIgnoreCase("ActualizarClient")) {
+			int id = Integer.parseInt(req.getParameter("idCli"));
+			String nameCli = req.getParameter("nameCli");
+			String userNameCli = req.getParameter("usernameCli");
+			String dateBorCli = req.getParameter("bdateCli");
+			long cedulaCli = Long.parseLong(req.getParameter("documentCli"));
+			int nSesiones = Integer.parseInt(req.getParameter("nSesiones"));
+			String apodo = req.getParameter("apodo");
+			String passwordCli = req.getParameter("passwordCli");
+			ahDao.updateById(id, nameCli, dateBorCli, cedulaCli, userNameCli, passwordCli, nSesiones, apodo);
+
+			RequestDispatcher rd = req.getRequestDispatcher("login-success-admin.jsp");
+			rd.forward(req, resp);
+
+			// MOSTRAR ALCOHOLICO
+		} else if (action.equalsIgnoreCase("MostrarClientes")) {
+			
+			ahDao.readAll();
+			out.print("User list: <br>");
+			for (AlcoholicoDTO ahDto : ahDao.getAlcoholicos()) {
+				out.write(ahDto.toString()  + "<br>");
+
+			}
+
+			// DELETE
+		} else if (action.equalsIgnoreCase("EliminarClint")) {
+			int id = Integer.parseInt(req.getParameter("idCli"));
+
+			ahDao.deleteById(id);
+			RequestDispatcher rd = req.getRequestDispatcher("login-success-admin.jsp");
+			rd.forward(req, resp);
+		}
+
+		else if (action.equalsIgnoreCase("Modificar")) {
 
 			int id = Integer.parseInt(req.getParameter("chageIdAd"));
 			String name = req.getParameter("textNom");

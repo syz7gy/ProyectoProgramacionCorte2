@@ -82,7 +82,7 @@ public class AlcoholicoDAO {
 				long cedula = dbcon.getResultSet().getLong("cedula");
 				String contrasena = dbcon.getResultSet().getString("contrasena");
 				String apodo = dbcon.getResultSet().getString("apodo");
-				int nSesiones = dbcon.getResultSet().getInt("nSesiones");
+				int nSesiones = dbcon.getResultSet().getInt("slimpiadas");
 				String fechaDeNacimiento = dbcon.getResultSet().getString("fechaDeNacimiento");
 				String username = dbcon.getResultSet().getString("username");
 
@@ -107,7 +107,7 @@ public class AlcoholicoDAO {
 
 		try {
 			dbcon.setPrepareStatement(dbcon.getConnect().prepareStatement(
-					"UPDATE alcoholicos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?, contrasena=?, nSesiones=? , apodo=? WHERE id=?;"));
+					"UPDATE alcoholicos SET id=?, nombre=?, fechaDeNacimiento=?, cedula=?, username=?, contrasena=?, slimpiadas=? , apodo=? WHERE id=?;"));
 			dbcon.getPrepareStatement().setInt(1, id);
 			dbcon.getPrepareStatement().setString(2, nombre);
 			dbcon.getPrepareStatement().setString(3, fechaDeNacimiento);

@@ -7,7 +7,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet" />
-	
+
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
 	rel="stylesheet" />
 <link rel="stylesheet" href="style/stylesAdmin.css">
@@ -68,16 +68,24 @@
 			<div class="div-crud">
 				<div class="crud-alcoholic-wrapper">
 					<h3>Handle clients:</h3>
-					<form action="#" id="crud">
-						<input type="text" id="name" placeholder="Name" /> <input
-							type="text" id="nickname" placeholder="Nickname" /> <input
-							type="text" id="document" placeholder="Document" /> <label
-							for="quantity">Number of sessions attended:</label> <input
-							type="number" id="quantity" name="quantity" min="0" max="1000">
-						<label> Enter your birthdate: <input type="date"
-							name="bdate" value="2023-10-01" />
-						</label> <input type="text" id="birth-place" placeholder="Birth place" />
-						<button type="submit" id="addbtn">Add</button>
+					<form action="admincontrollerservlet" method="post">
+						<input type="text" id="id" placeholder="ID" name="idCli">
+						<input type="text" id="name" placeholder="Name" name="nameCli">
+						<input type="text" id="nickname" placeholder="Username" name="usernameCli"> 
+						<input type="text" id="document" placeholder="Document" name="documentCli"> 
+						<input type="text" id="birth-place" placeholder="Birth place" name="bdateCli">
+						<input type="text" id="apodo" placeholder="Apodo" name="apodo">
+						<input type="text" id="sesion" placeholder="sesion" name="nSesiones">
+						<input type="text" id="password" placeholder="Password" name="passwordCli"> 
+						
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="AgregarClient">Add</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="ActualizarClient">Update</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="MostrarClientes">Show</button>
+						<button type="submit" id="addbtn" name="_methodAdmin"
+							value="EliminarClint">Delete</button>
 					</form>
 				</div>
 
@@ -100,13 +108,14 @@
 				<div class="crud-psychologist-wrapper">
 					<h3>Handle psychologists:</h3>
 					<form action="#" id="crud">
-						<input type="text" id="name" placeholder="Name" /><input
+						<input type="text" id="id" placeholder="ID" name="idPsy"></input>
+						<input type="text" id="name" placeholder="Name" name="" /><input
 							type="text" id="document" placeholder="Document" /> <label
 							for="quantity">Number of sessions attended:</label> <input
 							type="number" id="quantity" name="quantity" min="0" max="1000">
 						<label> Enter your birthdate: <input type="date"
-							name="bdate" value="2023-10-01" /></label> <input type="text"
-							id="birth-place" placeholder="Birth place" /><label>
+							name="bdate" value="2023-10-01" />
+						</label> <input type="text" id="birth-place" placeholder="Birth place" /><label>
 							Enter your graduation date: <input type="date" name="bdate"
 							value="2023-10-01" />
 						</label> <label for="salary-psychologist">Salary:</label><input
@@ -136,6 +145,7 @@
 				<div class="crud-service-wrapper">
 					<h3>Handle clients:</h3>
 					<form action="#" id="crud">
+						<input type="text" id="id" placeholder="ID" name="idServi"></input>
 						<input type="text" id="name" placeholder="Name" /> <input
 							type="text" id="document" placeholder="Document" /> <label
 							for="quantity">Number of sessions cleaned:</label> <input
